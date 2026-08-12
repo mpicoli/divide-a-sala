@@ -300,13 +300,18 @@
   @media (max-width: 480px) {
     .grid-shell { overflow-x: visible; }
     .weekgrid {
-      grid-template-columns: 44px repeat(5, 1fr);
+      grid-template-columns: 52px repeat(5, 1fr);
       gap: 4px;
       min-width: 0;
     }
     .weekgrid .cell { padding: 8px 2px; }
     .weekgrid .daylabel { font-size: 9.5px; letter-spacing: 0.02em; }
-    .weekgrid .rowlabel { font-size: 10px; line-height: 1.25; }
+    .weekgrid .rowlabel {
+      font-size: 9.5px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+      padding-right: 3px;
+    }
     .weekgrid .slot {
       font-size: 0;
       padding: 10px 2px;
