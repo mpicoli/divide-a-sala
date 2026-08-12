@@ -128,7 +128,16 @@
   /* ---------- Hero ---------- */
 
   .hero {
-    padding: 76px 0 48px;
+    padding: 64px 0 48px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+
+  @media (max-width: 760px) {
+    .hero { grid-template-columns: 1fr; padding-top: 44px; }
+    .hero-art { order: -1; max-width: 220px; margin: 0 auto; }
   }
 
   .eyebrow {
@@ -155,61 +164,50 @@
   h1 {
     font-family: 'Fraunces', Georgia, serif;
     font-weight: 600;
-    font-size: clamp(2.3rem, 6vw, 3.2rem);
-    line-height: 1.08;
+    font-size: clamp(2.1rem, 5.2vw, 2.9rem);
+    line-height: 1.1;
     letter-spacing: -0.01em;
-    margin: 0 0 22px;
+    margin: 0 0 20px;
     text-wrap: balance;
-    max-width: 14ch;
   }
 
   .lede {
-    font-size: 1.09rem;
+    font-size: 1.05rem;
     color: var(--ink-soft);
-    max-width: 54ch;
-    margin: 0 0 36px;
+    max-width: 46ch;
+    margin: 0 0 22px;
   }
 
-  .essentials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .essentials dl {
-    margin: 0;
-    padding: 16px 22px 16px 0;
-    flex: 1 1 160px;
-    border-right: 1px solid var(--line);
-  }
-
-  .essentials dl:last-child { border-right: none; }
-
-  @media (max-width: 640px) {
-    .essentials { flex-direction: column; }
-    .essentials dl {
-      padding: 14px 0;
-      border-right: none;
-      border-bottom: 1px solid var(--line);
-    }
-    .essentials dl:last-child { border-bottom: none; }
-  }
-
-  .essentials dt {
+  .meta-line {
     font-family: 'Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0 0 6px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
   }
 
-  .essentials dd {
+  .meta-note {
+    font-size: 0.82rem;
+    color: var(--muted);
     margin: 0;
-    font-weight: 500;
-    font-size: 0.98rem;
+  }
+
+  .hero-art { text-align: center; }
+
+  .hero-art svg {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+  }
+
+  .art-caption {
+    margin: 10px 0 0;
+    font-size: 0.72rem;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 260px;
+    margin-inline: auto;
   }
 
   /* ---------- Section shell ---------- */
@@ -540,22 +538,61 @@
 <div class="wrap">
 
   <header class="hero">
-    <p class="eyebrow">Um convite pra quem tá se formando comigo</p>
-    <h1>Divide a sala comigo?</h1>
-    <p class="lede">Enquanto eu monto minha própria carteira, sobra espaço na agenda. É pra quem também tá terminando a formação agora e ainda não tem consultório: sem precisar montar nada sozinho.</p>
-    <div class="essentials">
-      <dl>
-        <dt>Local</dt>
-        <dd>Porto Alegre, RS (endereço a confirmar após a visita de 14/08)</dd>
-      </dl>
-      <dl>
-        <dt>Dias</dt>
-        <dd>Segunda a sexta</dd>
-      </dl>
-      <dl>
-        <dt>Horário</dt>
-        <dd>08h às 19h</dd>
-      </dl>
+    <div class="hero-text">
+      <p class="eyebrow">Um convite pra quem tá se formando comigo</p>
+      <h1>Divide a sala comigo?</h1>
+      <p class="lede">Enquanto eu monto minha própria carteira, sobra espaço na agenda. É pra quem também tá terminando a formação agora e ainda não tem consultório: sem precisar montar nada sozinho.</p>
+      <p class="meta-line">Porto Alegre, RS &middot; Segunda a sexta &middot; 08h às 19h</p>
+      <p class="meta-note">Endereço a confirmar após a visita de 14/08.</p>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de uma sala de atendimento aconchegante, com poltrona, planta e janela com luz da tarde">
+        <title>Sala aconchegante, ilustração</title>
+        <rect x="1" y="1" width="278" height="318" rx="18" style="fill:var(--paper-raised); stroke:var(--line); stroke-width:1"/>
+
+        <rect x="34" y="26" width="212" height="108" rx="10" style="fill:var(--teal-soft)"/>
+        <circle cx="90" cy="55" r="16" style="fill:var(--teal); opacity:0.18"/>
+        <circle cx="112" cy="48" r="12" style="fill:var(--teal); opacity:0.15"/>
+        <circle cx="190" cy="52" r="14" style="fill:var(--teal); opacity:0.15"/>
+        <line x1="140" y1="26" x2="140" y2="134" style="stroke:var(--paper-raised); stroke-width:5"/>
+        <line x1="34" y1="80" x2="246" y2="80" style="stroke:var(--paper-raised); stroke-width:5"/>
+        <rect x="34" y="26" width="212" height="108" rx="10" style="fill:none; stroke:var(--line-strong); stroke-width:1.5"/>
+
+        <polygon points="140,134 246,134 210,300 90,300" style="fill:var(--gold); opacity:0.07"/>
+
+        <line x1="20" y1="234" x2="260" y2="234" style="stroke:var(--line-strong); stroke-width:1.5"/>
+
+        <rect x="46" y="240" width="188" height="54" rx="10" style="fill:var(--gold-soft); opacity:0.7"/>
+        <g style="fill:var(--gold); opacity:0.35">
+          <circle cx="70" cy="256" r="3"/>
+          <circle cx="95" cy="270" r="3"/>
+          <circle cx="120" cy="256" r="3"/>
+          <circle cx="145" cy="270" r="3"/>
+          <circle cx="170" cy="256" r="3"/>
+          <circle cx="195" cy="270" r="3"/>
+          <circle cx="215" cy="256" r="3"/>
+        </g>
+
+        <ellipse cx="66" cy="228" rx="20" ry="7" style="fill:var(--line)"/>
+        <rect x="58" y="200" width="16" height="28" rx="3" style="fill:var(--gold-soft); stroke:var(--muted); stroke-width:1"/>
+        <line x1="66" y1="200" x2="66" y2="176" style="stroke:var(--muted); stroke-width:2"/>
+        <circle cx="66" cy="166" r="12" style="fill:var(--gold); opacity:0.5"/>
+        <circle cx="66" cy="166" r="6" style="fill:var(--gold)"/>
+
+        <path d="M100 232 L130 232 L124 204 L106 204 Z" style="fill:var(--gold-soft); stroke:var(--muted); stroke-width:1"/>
+        <g style="fill:var(--teal)">
+          <ellipse cx="105" cy="198" rx="12" ry="9" style="opacity:0.85"/>
+          <ellipse cx="118" cy="188" rx="14" ry="10"/>
+          <ellipse cx="130" cy="200" rx="11" ry="8" style="opacity:0.85"/>
+          <ellipse cx="115" cy="204" rx="10" ry="7" style="opacity:0.7"/>
+        </g>
+
+        <rect x="150" y="150" width="80" height="62" rx="20" style="fill:var(--teal-soft); stroke:var(--teal); stroke-width:2"/>
+        <rect x="150" y="196" width="80" height="52" rx="16" style="fill:var(--teal-soft); stroke:var(--teal); stroke-width:2"/>
+        <rect x="140" y="204" width="18" height="34" rx="9" style="fill:var(--teal-soft); stroke:var(--teal); stroke-width:2"/>
+        <rect x="222" y="204" width="18" height="34" rx="9" style="fill:var(--teal-soft); stroke:var(--teal); stroke-width:2"/>
+      </svg>
+      <p class="art-caption">Ilustração. Não retrata o espaço real, que ainda está em avaliação.</p>
     </div>
   </header>
 
