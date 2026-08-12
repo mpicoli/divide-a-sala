@@ -407,6 +407,17 @@
 
   .card .fit b { color: var(--ink-soft); font-weight: 500; }
 
+  .card .example {
+    margin: 14px 0 0;
+    padding: 12px 14px;
+    background: var(--teal-soft);
+    border-radius: 10px;
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+  }
+
+  .card .example b { color: var(--teal-ink); font-weight: 600; }
+
   /* ---------- Take-home table ---------- */
 
   .table-shell {
@@ -530,7 +541,7 @@
 
   <header class="hero">
     <p class="eyebrow">Um convite pra quem tá se formando comigo</p>
-    <h1>Divide a sala comigo.</h1>
+    <h1>Divide a sala comigo</h1>
     <p class="lede">Enquanto eu monto minha própria carteira, sobra espaço na agenda. É pra quem também tá terminando a formação agora e ainda não tem consultório: sem precisar montar nada sozinho.</p>
     <div class="essentials">
       <dl>
@@ -582,19 +593,22 @@
   <section>
     <p class="section-label">Dois jeitos de topar</p>
     <h2>Fixo pra quem já tem ritmo, avulso pra quem tá começando.</h2>
+    <p class="body-text">Turno fixo: valor fechado por mês, não importa quantas sessões. Avulso: você paga só pelas horas que usar, multiplicado pelo total do mês. Os exemplos abaixo mostram a conta.</p>
     <div class="cards">
       <div class="card">
         <p class="tag">Turno fixo semanal</p>
         <h3>Reserva teu horário</h3>
         <p class="price">R$450<small>/mês</small></p>
-        <p>Mesmo dia e turno toda semana. Compensa a partir de umas 10 sessões por mês, e o horário é só teu.</p>
+        <p>Mesmo dia e turno toda semana, valor fixo, não importa quantas sessões você fizer.</p>
+        <p class="example"><b>Na prática:</b> com 10 sessões no mês, sai R$45 por sessão (R$450 ÷ 10), igual ao avulso. Da 11ª sessão em diante, cada uma fica mais barata que no avulso.</p>
         <p class="fit"><b>Bom pra:</b> quem já tem uma base de pacientes e quer previsibilidade.</p>
       </div>
       <div class="card">
         <p class="tag">Avulso por hora</p>
         <h3>Usa quando precisar</h3>
         <p class="price">R$45<small>/hora</small></p>
-        <p>Sem compromisso fixo. Reserva a hora que precisar, quando precisar, e paga só por ela.</p>
+        <p>Sem compromisso fixo. Paga só pelas horas que usar, quando usar.</p>
+        <p class="example"><b>Na prática:</b> R$45 por sessão, sempre. 5 sessões no mês = R$225 no total. 15 sessões = R$675.</p>
         <p class="fit"><b>Bom pra:</b> quem ainda tá formando a carteira e não sabe o volume certo.</p>
       </div>
     </div>
