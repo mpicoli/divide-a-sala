@@ -364,22 +364,6 @@
     margin: 0 0 6px;
   }
 
-  .card .price {
-    font-family: 'Plex Mono', monospace;
-    font-variant-numeric: tabular-nums;
-    font-size: 1.55rem;
-    font-weight: 500;
-    color: var(--teal);
-    margin: 4px 0 14px;
-  }
-
-  .card .price small {
-    font-family: 'Plex Sans', sans-serif;
-    font-size: 0.6em;
-    font-weight: 400;
-    color: var(--muted);
-  }
-
   .card p {
     font-size: 0.95rem;
     color: var(--ink-soft);
@@ -396,16 +380,72 @@
 
   .card .fit b { color: var(--ink-soft); font-weight: 500; }
 
-  .card .example {
-    margin: 14px 0 0;
-    padding: 12px 14px;
+  .card .ref-note {
+    margin: 10px 0 0;
+    font-size: 0.76rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .simulator {
+    margin: 16px 0 0;
+    padding: 16px;
     background: var(--teal-soft);
-    border-radius: 10px;
-    font-size: 0.86rem;
+    border-radius: 12px;
+  }
+
+  .simulator label {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+
+  .simulator input[type="range"] {
+    width: 100%;
+    accent-color: var(--teal);
+    margin: 0 0 12px;
+  }
+
+  .simulator .sim-value {
+    font-family: 'Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--teal-ink);
+    margin: 0 0 4px;
+  }
+
+  .simulator .sim-value small {
+    font-family: 'Plex Sans', sans-serif;
+    font-size: 0.55em;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .simulator .sim-result {
+    font-size: 0.84rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .simulator .sim-result span {
+    font-family: 'Plex Mono', monospace;
+    font-weight: 500;
+    color: var(--teal-ink);
+  }
+
+  .sim-breakeven {
+    margin-top: 20px;
+    font-size: 0.9rem;
     color: var(--ink-soft);
   }
 
-  .card .example b { color: var(--teal-ink); font-weight: 600; }
+  .sim-breakeven strong {
+    font-family: 'Plex Mono', monospace;
+    color: var(--teal);
+    font-weight: 500;
+  }
 
   /* ---------- Take-home table ---------- */
 
@@ -534,7 +574,7 @@
       <h1>Divide a sala comigo?</h1>
       <p class="lede">Enquanto eu monto minha própria carteira, sobra espaço na agenda. É pra quem também tá terminando a formação agora e ainda não tem consultório: sem precisar montar nada sozinho.</p>
       <p class="meta-line">Porto Alegre, RS &middot; Segunda a sexta &middot; 08h às 19h</p>
-      <p class="meta-note">Confirmação do endereço prevista para novembro/dezembro.</p>
+      <p class="meta-note">Provavelmente numa região nobre, perto da Av. Carlos Gomes. Endereço final e confirmação previstos para novembro/dezembro.</p>
     </div>
     <div class="hero-art">
       <svg viewBox="0 0 280 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustração de uma sala de atendimento aconchegante, com poltrona, planta e janela com luz da tarde">
@@ -619,32 +659,43 @@
 
   <section>
     <p class="section-label">Dois jeitos de topar</p>
-    <h2>Fixo pra quem já tem ritmo, avulso pra quem tá começando.</h2>
-    <p class="body-text">Turno fixo: valor fechado por mês, não importa quantas sessões. Avulso: você paga só pelas horas que usar, multiplicado pelo total do mês. Os exemplos abaixo mostram a conta.</p>
+    <h2>Ainda não travamos os valores.</h2>
+    <p class="body-text">Turno fixo: valor fechado por mês, não importa quantas sessões. Avulso: você paga só pelas horas que usar, multiplicado pelo total do mês. Mexe nos controles abaixo e testa o que faria sentido pra você, é exatamente isso que o formulário ajuda a validar.</p>
     <div class="cards">
       <div class="card">
         <p class="tag">Turno fixo semanal</p>
         <h3>Reserva teu horário</h3>
-        <p class="price">R$450<small>/mês</small></p>
         <p>Mesmo dia e turno toda semana, valor fixo, não importa quantas sessões você fizer.</p>
-        <p class="example"><b>Na prática:</b> com 10 sessões no mês, sai R$45 por sessão (R$450 ÷ 10), igual ao avulso. Da 11ª sessão em diante, cada uma fica mais barata que no avulso.</p>
+        <div class="simulator">
+          <label for="turnoSlider">Quanto faria sentido pagar de mensalidade?</label>
+          <input type="range" id="turnoSlider" min="150" max="600" step="10" value="300">
+          <p class="sim-value">R$<span id="turnoValue">300</span><small>/mês</small></p>
+          <p class="sim-result">Com 10 sessões no mês, equivale a R$<span id="turnoPerSession">30</span> por sessão.</p>
+        </div>
         <p class="fit"><b>Bom pra:</b> quem já tem uma base de pacientes e quer previsibilidade.</p>
+        <p class="ref-note">Nossa referência inicial era R$450/mês, mas seguimos abertos.</p>
       </div>
       <div class="card">
         <p class="tag">Avulso por hora</p>
         <h3>Usa quando precisar</h3>
-        <p class="price">R$45<small>/hora</small></p>
         <p>Sem compromisso fixo. Paga só pelas horas que usar, quando usar.</p>
-        <p class="example"><b>Na prática:</b> R$45 por sessão, sempre. 5 sessões no mês = R$225 no total. 15 sessões = R$675.</p>
+        <div class="simulator">
+          <label for="avulsoSlider">Quanto faria sentido pagar por hora?</label>
+          <input type="range" id="avulsoSlider" min="20" max="80" step="5" value="30">
+          <p class="sim-value">R$<span id="avulsoValue">30</span><small>/hora</small></p>
+          <p class="sim-result">Com 10 sessões no mês, dá R$<span id="avulsoTotal">300</span> no total.</p>
+        </div>
         <p class="fit"><b>Bom pra:</b> quem ainda tá formando a carteira e não sabe o volume certo.</p>
+        <p class="ref-note">Nossa referência inicial era R$45/hora, mas seguimos abertos.</p>
       </div>
     </div>
+    <p class="sim-breakeven">Com esses valores, o turno fixo compensa a partir de <strong id="breakevenSessions">10</strong> sessões por mês.</p>
   </section>
 
   <section>
     <p class="section-label">Os números</p>
     <h2>O que sobra pro teu bolso</h2>
-    <p class="body-text">Uma conta simples: o valor que tu cobra por sessão, menos o que fica com a sala.</p>
+    <p class="body-text">Uma conta simples: o valor que tu cobra por sessão, menos o que fica com a sala. Atualiza sozinha conforme tu mexe nos controles acima.</p>
     <div class="table-shell">
       <table>
         <thead>
@@ -657,18 +708,18 @@
         <tbody>
           <tr>
             <td class="num">R$100/h</td>
-            <td class="num">R$1.715 <span class="pct">(79%)</span></td>
-            <td class="num">R$55 <span class="pct">(55%)</span></td>
+            <td class="num">R$<span id="turnoLiq100">1.865</span> <span class="pct">(<span id="turnoPct100">86</span>%)</span></td>
+            <td class="num">R$<span id="avulsoLiq100">70</span> <span class="pct">(<span id="avulsoPct100">70</span>%)</span></td>
           </tr>
           <tr>
             <td class="num">R$120/h</td>
-            <td class="num">R$2.148 <span class="pct">(83%)</span></td>
-            <td class="num">R$75 <span class="pct">(63%)</span></td>
+            <td class="num">R$<span id="turnoLiq120">2.298</span> <span class="pct">(<span id="turnoPct120">88</span>%)</span></td>
+            <td class="num">R$<span id="avulsoLiq120">90</span> <span class="pct">(<span id="avulsoPct120">75</span>%)</span></td>
           </tr>
           <tr>
             <td class="num">R$150/h</td>
-            <td class="num">R$2.797 <span class="pct">(86%)</span></td>
-            <td class="num">R$105 <span class="pct">(70%)</span></td>
+            <td class="num">R$<span id="turnoLiq150">2.947</span> <span class="pct">(<span id="turnoPct150">91</span>%)</span></td>
+            <td class="num">R$<span id="avulsoLiq150">120</span> <span class="pct">(<span id="avulsoPct150">80</span>%)</span></td>
           </tr>
         </tbody>
       </table>
@@ -695,6 +746,49 @@
   </footer>
 
 </div>
+
+<script>
+  (function () {
+    var SESSOES_REF = 21.65; // 5 sessões/semana x 4,33 semanas/mês, turno cheio
+    var turnoSlider = document.getElementById('turnoSlider');
+    var avulsoSlider = document.getElementById('avulsoSlider');
+    var patientRates = [100, 120, 150];
+
+    function formatBRL(n) {
+      return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function update() {
+      var turno = parseInt(turnoSlider.value, 10);
+      var avulso = parseInt(avulsoSlider.value, 10);
+
+      document.getElementById('turnoValue').textContent = turno;
+      document.getElementById('turnoPerSession').textContent = Math.round(turno / 10);
+      document.getElementById('avulsoValue').textContent = avulso;
+      document.getElementById('avulsoTotal').textContent = formatBRL(avulso * 10);
+
+      var breakeven = Math.round((turno / avulso) * 10) / 10;
+      document.getElementById('breakevenSessions').textContent = breakeven;
+
+      patientRates.forEach(function (rate) {
+        var bruto = rate * SESSOES_REF;
+        var liqTurno = bruto - turno;
+        var pctTurno = Math.round((liqTurno / bruto) * 100);
+        var liqAvulso = rate - avulso;
+        var pctAvulso = Math.round((liqAvulso / rate) * 100);
+
+        document.getElementById('turnoLiq' + rate).textContent = formatBRL(liqTurno);
+        document.getElementById('turnoPct' + rate).textContent = pctTurno;
+        document.getElementById('avulsoLiq' + rate).textContent = formatBRL(liqAvulso);
+        document.getElementById('avulsoPct' + rate).textContent = pctAvulso;
+      });
+    }
+
+    turnoSlider.addEventListener('input', update);
+    avulsoSlider.addEventListener('input', update);
+    update();
+  })();
+</script>
 
 </body>
 </html>
