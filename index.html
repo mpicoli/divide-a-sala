@@ -187,6 +187,16 @@
 
   .essentials dl:last-child { border-right: none; }
 
+  @media (max-width: 640px) {
+    .essentials { flex-direction: column; }
+    .essentials dl {
+      padding: 14px 0;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+    }
+    .essentials dl:last-child { border-bottom: none; }
+  }
+
   .essentials dt {
     font-family: 'Plex Mono', monospace;
     font-size: 11px;
@@ -285,6 +295,26 @@
     font-size: 12px;
     font-weight: 500;
     border: 1px solid transparent;
+  }
+
+  @media (max-width: 480px) {
+    .grid-shell { overflow-x: visible; }
+    .weekgrid {
+      grid-template-columns: 44px repeat(5, 1fr);
+      gap: 4px;
+      min-width: 0;
+    }
+    .weekgrid .cell { padding: 8px 2px; }
+    .weekgrid .daylabel { font-size: 9.5px; letter-spacing: 0.02em; }
+    .weekgrid .rowlabel { font-size: 10px; line-height: 1.25; }
+    .weekgrid .slot {
+      font-size: 0;
+      padding: 10px 2px;
+    }
+    .weekgrid .slot::after {
+      content: "\25CF";
+      font-size: 11px;
+    }
   }
 
   .grid-caption {
@@ -417,6 +447,14 @@
   .pct {
     color: var(--muted);
     font-size: 0.88em;
+  }
+
+  @media (max-width: 480px) {
+    .table-shell { overflow-x: visible; }
+    table { min-width: 0; }
+    th, td { padding: 10px 8px; font-size: 0.82rem; }
+    thead th { font-size: 9px; }
+    .pct { display: block; margin-top: 2px; }
   }
 
   /* ---------- CTA ---------- */
